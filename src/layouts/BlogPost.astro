@@ -1,0 +1,101 @@
+---
+import Layout from './Layout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <article class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
+    <!-- Article card with proper background for readability -->
+    <div class="bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12">
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6" style="color: #FFFFFF">
+          {frontmatter.title}
+        </h1>
+        
+        <div class="flex items-center gap-4 text-sm mb-6" style="color: #9CA3AF">
+          <time class="font-medium">{frontmatter.date}</time>
+        </div>
+        
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-8">
+            {frontmatter.tags.map((tag: string) => (
+              <span 
+                class="px-4 py-2 rounded-full text-sm font-medium" 
+                style="background-color: #0a1a2f; color: white;"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+        
+        {frontmatter.description && (
+          <p 
+            class="text-lg md:text-xl italic border-l-4 pl-6 py-2" 
+            style="border-color: #7c3aed; color: #D1D5DB;"
+          >
+            {frontmatter.description}
+          </p>
+        )}
+      </header>
+      
+      <div class="prose prose-lg max-w-none">
+        <slot />
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  /* Ensure readability with proper contrast */
+  .prose {
+    color: #E5E7EB;
+  }
+  
+  .prose h2 {
+    color: #0a1a2f;
+    margin-top: 2em;
+    font-weight: 700;
+  }
+  
+  .prose h3 {
+    color: #FFFFFF;
+    margin-top: 1.5em;
+    font-weight: 600;
+  }
+  
+  .prose a {
+    color: #0a1a2f;
+    text-decoration: underline;
+  }
+  
+  .prose a:hover {
+    color: #7c3aed;
+  }
+  
+  .prose strong {
+    color: #FFFFFF;
+    font-weight: 700;
+  }
+  
+  .prose code {
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+  
+  .prose pre {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+  
+  .prose blockquote {
+    border-left-color: #7c3aed;
+    color: #D1D5DB;
+  }
+</style>

@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Odds Center - ScoreStack Predictor";
+const pageDescription = "Dive into the Odds Center for real-time football betting odds, AI-powered predictions, and expert analysis to enhance your betting strategy on ScoreStack Predictor.";
+
+const features = [
+  {
+    title: "Real-Time Updates",
+    description: "Odds refresh instantly as matches approach, ensuring you're always ahead of the curve.",
+    icon: "fas fa-bolt"
+  },
+  {
+    title: "AI Predictions",
+    description: "Our machine learning models analyze stats, form, injuries, and more to forecast outcomes with up to 85% accuracy.",
+    icon: "fas fa-robot"
+  },
+  {
+    title: "Comprehensive Coverage",
+    description: "From Premier League to MLS, get odds on hundreds of global leagues and cups.",
+    icon: "fas fa-globe-americas"
+  }
+];
+
+const upcomingMatches = [
+  {
+    home: "Manchester City",
+    away: "Liverpool",
+    time: "20:00 BST",
+    odds: { home: 2.10, draw: 3.40, away: 3.25 }
+  },
+  {
+    home: "Barcelona",
+    away: "Real Madrid",
+    time: "22:30 CET",
+    odds: { home: 2.75, draw: 3.20, away: 2.40 }
+  },
+  {
+    home: "Bayern Munich",
+    away: "Borussia Dortmund",
+    time: "19:30 CET",
+    odds: { home: 1.85, draw: 3.60, away: 4.10 }
+  },
+  {
+    home: "Arsenal",
+    away: "Chelsea",
+    time: "17:00 BST",
+    odds: { home: 2.35, draw: 3.50, away: 3.00 }
+  }
+];
+
+const topLeagues = [
+  { name: "Premier League", count: 10 },
+  { name: "La Liga", count: 8 },
+  { name: "Bundesliga", count: 7 },
+  { name: "Serie A", count: 6 },
+  { name: "Ligue 1", count: 5 }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  {/* Hero Section */}
+  <div class="relative bg-gradient-to-br from-[#0a1a2f] via-[#11223a] to-[#0a1a2f] overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#7c3aed]/10 to-transparent"></div>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7c3aed]/10 rounded-full filter blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-[#7c3aed]/5 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block px-4 py-1 mb-4 bg-[#7c3aed]/20 text-[#7c3aed] rounded-full border border-[#7c3aed]/30 text-sm font-medium">
+          NEW: AI-Powered Predictions
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          Odds Center
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#00f3ff]">ScoreStack Predictor</span>
+        </h1>
+        <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          Dive into the <span class="text-[#7c3aed] font-semibold">Odds Center</span> for real-time football betting odds, 
+          <span class="text-[#00f3ff] font-semibold"> AI-powered predictions</span>, and expert analysis to enhance your betting strategy.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button class="px-8 py-3 bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#7c3aed]/30">
+            View Live Odds
+          </button>
+          <button class="px-8 py-3 bg-transparent border-2 border-[#7c3aed] text-[#7c3aed] hover:bg-[#7c3aed]/10 font-medium rounded-lg transition-all duration-300">
+            How It Works
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Features Section */}
+  <section class="py-20 bg-gradient-to-b from-[#0a1a2f] to-[#0a1a2f]">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose ScoreStack's Odds Center?</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Our cutting-edge platform combines real-time data, advanced algorithms, and expert insights for the ultimate betting experience.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <div key={index} class="bg-gradient-to-br from-[#11223a]/50 to-[#0a1a2f]/50 backdrop-blur-sm border border-[#7c3aed]/20 rounded-xl p-8 hover:border-[#7c3aed]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#7c3aed]/10 group">
+            <div class="w-16 h-16 rounded-lg bg-[#7c3aed]/10 flex items-center justify-center mb-6 group-hover:bg-[#7c3aed] transition-colors duration-300">
+              <i class={`${feature.icon} text-2xl text-[#7c3aed] group-hover:text-white`}></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">{feature.title}</h3>
+            <p class="text-gray-400">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Live Odds Section */}
+  <section class="py-20 bg-gradient-to-b from-[#0a1a2f] to-[#0a1a2f]">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center mb-10">
+        <h2 class="text-3xl font-bold text-white">Live Odds & Predictions</h2>
+        <div class="flex space-x-2">
+          <button class="px-4 py-2 bg-[#7c3aed]/20 text-[#7c3aed] rounded-lg text-sm font-medium hover:bg-[#7c3aed]/30 transition-colors">
+            All Leagues
+          </button>
+          <button class="px-4 py-2 bg-[#11223a] text-gray-300 rounded-lg text-sm font-medium hover:bg-[#11223a]/50 transition-colors">
+            Today's Matches
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <div class="min-w-full inline-block align-middle">
+          <div class="bg-[#11223a]/50 border border-[#7c3aed]/20 rounded-xl overflow-hidden">
+            <table class="min-w-full divide-y divide-[#7c3aed]/20">
+              <thead class="bg-gradient-to-r from-[#11223a]/50 to-[#0a1a2f]/50">
+                <tr>
+                  <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Match</th>
+                  <th scope="col" class="px-6 py-4 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">Time</th>
+                  <th scope="col" class="px-6 py-4 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">Home</th>
+                  <th scope="col" class="px-6 py-4 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">Draw</th>
+                  <th scope="col" class="px-6 py-4 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">Away</th>
+                  <th scope="col" class="px-6 py-4 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">Prediction</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#7c3aed]/10">
+                {upcomingMatches.map((match, index) => (
+                  <tr key={index} class="hover:bg-[#11223a]/30 transition-colors">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <div class="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-[#7c3aed] to-[#00f3ff] rounded-md flex items-center justify-center mr-3">
+                          <span class="text-xs font-bold text-white">{match.home.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <div class="text-sm font-medium text-white">{match.home}</div>
+                          <div class="text-sm text-gray-400">vs {match.away}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-400">
+                      <div class="flex items-center justify-center">
+                        <i class="fas fa-clock text-[#7c3aed] mr-1"></i>
+                        {match.time}
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm font-medium">{match.odds.home.toFixed(2)}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm font-medium">{match.odds.draw.toFixed(2)}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span class="px-3 py-1 bg-red-500/10 text-red-400 rounded-full text-sm font-medium">{match.odds.away.toFixed(2)}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span class="px-3 py-1 bg-[#7c3aed]/20 text-[#7c3aed] rounded-full text-sm font-medium">
+                        {match.odds.home < match.odds.away ? "Home Win" : match.odds.away < match.odds.home ? "Away Win" : "Draw"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Leagues Section */}
+  <section class="py-20 bg-gradient-to-b from-[#0a1a2f] to-[#0a1a2f]">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Global League Coverage</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          We cover hundreds of football leagues and cups worldwide with precise odds and predictions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {topLeagues.map((league, index) => (
+          <div key={index} class="bg-gradient-to-br from-[#11223a]/50 to-[#0a1a2f]/50 backdrop-blur-sm border border-[#7c3aed]/20 rounded-xl p-6 hover:border-[#7c3aed]/50 transition-all duration-300 group">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-lg bg-[#7c3aed]/10 flex items-center justify-center">
+                <i class="fas fa-trophy text-xl text-[#7c3aed]"></i>
+              </div>
+              <span class="px-3 py-1 bg-[#7c3aed]/20 text-[#7c3aed] text-xs font-bold rounded-full">
+                {league.count} matches
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">{league.name}</h3>
+            <p class="text-gray-400 text-sm">Active coverage</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 text-center">
+        <button class="px-8 py-3 border-2 border-[#7c3aed] text-[#7c3aed] hover:bg-[#7c3aed]/10 font-medium rounded-lg transition-all duration-300">
+          View All Leagues
+        </button>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <section class="py-20 bg-gradient-to-br from-[#0a1a2f] to-[#11223a] relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#7c3aed]/10 to-transparent"></div>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7c3aed]/10 rounded-full filter blur-3xl animate-pulse"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Make Smarter Bets?</h2>
+        <p class="text-xl text-gray-300 mb-10">
+          Join thousands of punters who trust ScoreStack Predictor for their betting decisions. Start your journey to better odds today.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button class="px-8 py-3 bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#7c3aed]/30">
+            Get Started Free
+          </button>
+          <button class="px-8 py-3 bg-transparent border-2 border-[#7c3aed] text-[#7c3aed] hover:bg-[#7c3aed]/10 font-medium rounded-lg transition-all duration-300">
+            View Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+  }
+  
+  .animate-pulse {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>

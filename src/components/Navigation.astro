@@ -1,0 +1,60 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/odds-center', label: 'Odds-Center' },
+  { href: '/betting-tips', label: 'Betting-Tips' },
+  { href: '/live-matches', label: 'Live-Matches' }
+];
+---
+
+<nav class="bg-[#0a1a2f] border-b border-[#7c3aed]">
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-white hover:text-[#7c3aed] transition-colors duration-300">
+        ScoreStack Predictor
+      </a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-6">
+        {navItems.map((item) => (
+          <a 
+            href={item.href} 
+            class="text-gray-300 hover:text-[#7c3aed] transition-colors duration-300 relative group"
+          >
+            {item.label}
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#7c3aed] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        ))}
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-white hover:text-[#7c3aed] transition-colors duration-300">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 flex flex-col gap-3">
+      {navItems.map((item) => (
+        <a 
+          href={item.href} 
+          class="text-gray-300 hover:text-[#7c3aed] transition-colors duration-300 py-2 px-4 rounded-md hover:bg-[#0d2240] transition-bg duration-300"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<!-- Client-side JavaScript for mobile toggle -->
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  
+  if (button && menu) {
+    button.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>
